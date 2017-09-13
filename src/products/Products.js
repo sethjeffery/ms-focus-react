@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import { fetchProducts } from '../api';
+import { fetchProducts, addLineItem, removeLineItem } from '../api';
 import { connect } from 'react-redux';
 import Product from './Product';
 import { ListGroup } from 'reactstrap';
@@ -17,12 +17,16 @@ export class Products extends Component {
   }
 
   render() {
-    if(this.props.products.length) {
+    const { addLineItem, removeLineItem, products } = this.props
+
+    if (products.length) {
       return (
         <div>
           <h3>Products</h3>
           <ListGroup>
-            {this.props.products.map((product) => <Product product={product} key={product.code} /> )}
+            {this.props.products.map((product) => (
+              <Product product={product} key={product.code} addLineItem={addLineItem} removeLineItem={removeLineItem} />
+            ))}
           </ListGroup>
         </div>
       )
@@ -42,7 +46,9 @@ export default connect(
   },
   function mapDispatchToProps(dispatch) {
     return {
-      fetchProducts: () => dispatch(fetchProducts())
+      fetchProducts: () => dispatch(fetchProducts()),
+      addLineItem: (code) => dispatch(addLineItem(code)),
+      removeLineItem: (code) => dispatch(removeLineItem(code)),
     }
   }
 )(Products)

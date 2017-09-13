@@ -2,6 +2,8 @@ import React from 'react'
 import { mount } from 'enzyme'
 import { Products } from './Products'
 import Product from './Product'
+import { Provider } from 'react-redux'
+import configureStore from 'redux-mock-store'
 
 describe('without products', () => {
   it('fetches the products', () => {
