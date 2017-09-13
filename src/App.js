@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Products } from './products';
+import { Basket } from './basket';
 import { Container } from 'reactstrap';
 
 export default () => (
@@ -10,6 +11,7 @@ export default () => (
     </div>
     <Container>
       <Products />
+      <Basket />
     </Container>
   </div>
 )

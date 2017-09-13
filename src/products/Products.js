@@ -16,11 +16,9 @@ class Products extends Component {
     if(this.props.products.length) {
       return (
         <div>
-          <h2>Products</h2>
+          <h3>Products</h3>
           <ListGroup>
-            {this.props.products.map((product) => (
-              <Product product={product} key={product.code} />
-            ))}
+            {this.props.products.map((product) => <Product product={product} key={product.code} /> )}
           </ListGroup>
         </div>
       )
