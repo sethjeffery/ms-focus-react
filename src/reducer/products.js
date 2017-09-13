@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, SUCCESS, FAILURE } from '../api'
+import { FETCH_PRODUCTS, SUCCESS } from '../api'
 
 export default (state = [], action) => {
   switch(action.type) {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import { fetchProducts, addLineItem, removeLineItem } from '../api';
 import { connect } from 'react-redux';
 import Product from './Product';

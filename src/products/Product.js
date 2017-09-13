@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroup, ListGroupItem, Button } from 'reactstrap'
+import { ListGroupItem, Button } from 'reactstrap'
 
 export default ({ product, addLineItem, removeLineItem }) => (
   <ListGroupItem className="Product" id={`product_${product.code}`}>
