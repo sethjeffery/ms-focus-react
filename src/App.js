@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Products from './products/Products';
+import { Products } from './products';
 import { Container } from 'reactstrap';
 
 export default () => (
