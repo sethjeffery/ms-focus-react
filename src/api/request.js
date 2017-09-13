@@ -34,14 +34,16 @@ export const request = ({
   endpoint,                     // API endpoint (starting with / )
   body,                         // json object data to send
 }) => (
-  {
-    [RSAA]: {
-      endpoint: baseUri + endpoint,
-      types: [REQUEST(type), SUCCESS(type), FAILURE(type)],
-      headers: { 'Content-Type': 'application/json', ...headers },
-      body: JSON.stringify(body),
-      method
-    }
+  (dispatch, getState) => {
+    dispatch({
+      [RSAA]: {
+        endpoint: baseUri + endpoint,
+        types: [REQUEST(type), SUCCESS(type), FAILURE(type)],
+        headers: { 'Content-Type': 'application/json', ...headers },
+        body: JSON.stringify(body),
+        method
+      }
+    })
   }
 )
 

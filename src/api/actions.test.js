@@ -1,26 +1,50 @@
 import { fetchProducts, fetchBasket, addLineItem, removeLineItem } from './actions'
-import { get, post } from './request'
+import { RSAA } from 'redux-api-middleware'
 
 describe('fetchProducts', () => {
   it('generates a FETCH_PRODUCTS get-request action', () => {
-    expect(fetchProducts()).toEqual(get({ type: 'FETCH_PRODUCTS', endpoint: '/api/products' }))
+    const dispatch = jest.fn();
+    fetchProducts()(dispatch)
+    expect(dispatch.mock.calls[0][0][RSAA]).toMatchObject({
+      endpoint: "http://localhost:3000/api/products",
+      method: 'GET',
+      types: ["FETCH_PRODUCTS_REQUEST", "FETCH_PRODUCTS_SUCCESS", "FETCH_PRODUCTS_FAILURE"]
+    })
   })
 })
 
 describe('fetchBasket', () => {
   it('generates a FETCH_BASKET get-request action', () => {
-    expect(fetchBasket()).toEqual(get({ type: 'FETCH_BASKET', endpoint: '/api/basket' }))
+    const dispatch = jest.fn();
+    fetchBasket()(dispatch)
+    expect(dispatch.mock.calls[0][0][RSAA]).toMatchObject({
+      endpoint: "http://localhost:3000/api/basket",
+      method: 'GET',
+      types: ["FETCH_BASKET_REQUEST", "FETCH_BASKET_SUCCESS", "FETCH_BASKET_FAILURE"]
+    })
   })
 })
 
 describe('addLineItem', () => {
   it('generates a ADD_LINE_ITEM post-request action', () => {
-    expect(addLineItem('AB01')).toEqual(post({ type: 'ADD_LINE_ITEM', endpoint: '/api/basket/add', body: { code: "AB01" } }))
+    const dispatch = jest.fn();
+    addLineItem('AB01')(dispatch)
+    expect(dispatch.mock.calls[0][0][RSAA]).toMatchObject({
+      endpoint: "http://localhost:3000/api/basket/add",
+      method: 'POST',
+      types: ["ADD_LINE_ITEM_REQUEST", "ADD_LINE_ITEM_SUCCESS", "ADD_LINE_ITEM_FAILURE"]
+    })
   })
 })
 
 describe('removeLineItem', () => {
   it('generates a REMOVE_LINE_ITEM post-request action', () => {
-    expect(removeLineItem('AB01')).toEqual(post({ type: 'REMOVE_LINE_ITEM', endpoint: '/api/basket/remove', body: { code: "AB01" } }))
+    const dispatch = jest.fn();
+    removeLineItem('AB01')(dispatch)
+    expect(dispatch.mock.calls[0][0][RSAA]).toMatchObject({
+      endpoint: "http://localhost:3000/api/basket/remove",
+      method: 'POST',
+      types: ["REMOVE_LINE_ITEM_REQUEST", "REMOVE_LINE_ITEM_SUCCESS", "REMOVE_LINE_ITEM_FAILURE"]
+    })
   })
 })

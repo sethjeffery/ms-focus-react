@@ -2,7 +2,12 @@ import { get, post } from './request'
 import { RSAA } from 'redux-api-middleware'
 
 describe('get', () => {
+  it('returns a thunk', () => {
+    expect(get({ type: 'TYPE', endpoint: '/path/to/api' })).toBeInstanceOf(Function)
+  })
+
   it('generates a get-request action', () => {
+    const dispatch = jest.fn();
     const action = {
       [RSAA]: {
         endpoint: 'http://localhost:3000/path/to/api',
@@ -12,12 +17,18 @@ describe('get', () => {
         method: 'GET'
       }
     }
-    expect(get({ type: 'TYPE', endpoint: '/path/to/api' })).toEqual(action)
+    get({ type: 'TYPE', endpoint: '/path/to/api' })(dispatch)
+    expect(dispatch).toHaveBeenCalledWith(action)
   })
 })
 
 describe('post', () => {
+  it('returns a thunk', () => {
+    expect(post({ type: 'TYPE', endpoint: '/path/to/api' })).toBeInstanceOf(Function)
+  })
+
   it('generates a post-request action', () => {
+    const dispatch = jest.fn();
     const action = {
       [RSAA]: {
         endpoint: 'http://localhost:3000/path/to/api',
@@ -27,6 +38,7 @@ describe('post', () => {
         method: 'POST'
       }
     }
-    expect(post({ type: 'TYPE', endpoint: '/path/to/api' })).toEqual(action)
+    post({ type: 'TYPE', endpoint: '/path/to/api' })(dispatch)
+    expect(dispatch).toHaveBeenCalledWith(action)
   })
 })
