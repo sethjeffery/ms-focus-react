@@ -4,14 +4,18 @@ import { connect } from 'react-redux';
 import LineItems from './LineItems';
 
 export class Basket extends Component {
+  static defaultProps = {
+    basket: {}
+  }
+
   componentDidMount() {
-    if (!this.props.basket || !this.props.basket.items) {
+    if (!this.props.basket.items) {
       this.props.fetchBasket();
     }
   }
 
   render() {
-    if(this.props.basket && this.props.basket.items) {
+    if(this.props.basket.items) {
       if (this.props.basket.items.length) {
         return (
           <div>

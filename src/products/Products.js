@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import Product from './Product';
 import { ListGroup } from 'reactstrap';
 
-class Products extends Component {
+export class Products extends Component {
+  static defaultProps = {
+    products: []
+  };
+
   componentDidMount() {
     if (!this.props.products.length) {
       this.props.fetchProducts();
