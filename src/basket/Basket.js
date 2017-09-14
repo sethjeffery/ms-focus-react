@@ -15,14 +15,14 @@ export class Basket extends Component {
   }
 
   render() {
-    const { items, formatted_total } = this.props.basket
+    const { items, formatted_total, formatted_delivery_charge } = this.props.basket
 
     if(items) {
       if (items.length) {
         return (
           <div>
             <h3>Basket</h3>
-            <LineItems items={items} total={formatted_total} />
+            <LineItems items={items} total={formatted_total} deliveryCharge={formatted_delivery_charge} />
           </div>
         )
       } else {
