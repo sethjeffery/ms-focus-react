@@ -1,4 +1,4 @@
-import reducer from './basket';
+import reducer from './reducer';
 
 describe('FETCH_BASKET_SUCCESS', () => {
   it('saves the basket state', () => {

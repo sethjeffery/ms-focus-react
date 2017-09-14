@@ -1,4 +1,4 @@
-import reducer from './products';
+import reducer from './reducer';
 
 describe('FETCH_PRODUCTS_SUCCESS', () => {
   it('saves the products in the state', () => {
