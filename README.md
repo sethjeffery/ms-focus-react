@@ -1,4 +1,6 @@
 This is a React front-end app for the [MS Focus Shop](https://github.com/sethjeffery/ms-focus).
+It is built from [create-react-app](https://github.com/facebookincubator/create-react-app) so that a lot of the setup
+is hidden away and using defaults.
 
 ## Running the app
 
